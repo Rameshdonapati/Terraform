@@ -1,0 +1,13 @@
+
+   5        1.350 terraform validate
+   6        0.672 terraform workspace list
+   7        0.667 terraform workspace new dev
+   8        0.660 terraform workspace list
+   9        0.739 terraform workspace select dev
+  15        0.689 Terraform workspace new prod
+  17        0.107 terraform workspace show
+  19        0.668 terraform workspace list
+  21        1.355 terraform init
+  23       17.316 terraform apply -var-file dev.tfvars
+  24        0.676 terraform workspace select prod
+  25       16.404 terraform apply -var-file prod.tfvars
