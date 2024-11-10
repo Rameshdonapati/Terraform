@@ -1,0 +1,33 @@
+
+Provisioners are a Last Resort
+Terraform includes the concept of provisioners as a measure of pragmatism, knowing that there are always certain behaviors that cannot be directly represented in Terraform's declarative model.
+
+File
+Local-Exec
+Remote-Exec
+
+ we do not recommend using any provisioners except the built-in file, local-exec, and remote-exec provisioners.
+
+ Expressions in provisioner blocks cannot refer to their parent resource by name. Instead, they can use the special self object.
+
+The self object represents the provisioner's parent resource, and has all of that resource's attributes. For example, use self.public_ip to reference an aws_instance's public_ip attribute.
+
+
+Suppressing Provisioner Logs in CLI Output
+
+Creation-Time Provisioners
+By default, provisioners run when the resource they are defined within is created. Creation-time provisioners are only run during creation, not during updating or any other lifecycle. They are meant as a means to perform bootstrapping of a system.
+If a creation-time provisioner fails, the resource is marked as tainted. A tainted resource will be planned for destruction and recreation upon the next terraform apply. Terraform does this because a failed provisioner can leave a resource in a semi-configured state. Because Terraform cannot reason about what the provisioner does, the only way to ensure proper creation of a resource is to recreate it. This is tainting.
+
+You can change this behavior by setting the on_failure attribute to continue.
+
+
+    "maxDataDiskCount": 4,
+    "memoryInMB": 8192,
+    "name": "Standard_DC1ds_v3",
+    "numberOfCores": 1,
+    "osDiskSizeInMB": 1047552,
+    "resourceDiskSizeInMB": 76800
+
+
+
