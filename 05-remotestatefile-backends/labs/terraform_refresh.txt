@@ -1,0 +1,9 @@
+Lab 
+step1 : Delete subnet
+step2: Onportal open starag account- container-staefile 
+step3: check the size of the state file
+step4: go to VS code .. run terraform refresh
+step5: observe on portal- the state file size reduces ( ex 4.45kb to 2.5kb)
+step6 : run terraform state pull > state.tfstate .
+step7 : once statefile copies to local . observe the subnet block missing in state file.
+step8: statefile syncs with resources in cloud when we run refresh
